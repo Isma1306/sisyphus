@@ -8,7 +8,7 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sisyphus';
+  title = 'Sisyphus';
   constructor(private http: APIClientService, private userService: UserService,) { }
   ngOnInit(): void {
     this.http.getUser().subscribe(user => {

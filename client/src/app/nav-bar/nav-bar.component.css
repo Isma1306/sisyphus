@@ -1,5 +1,8 @@
 .sidenav-container {
   height: 100%;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sidenav {
@@ -17,5 +20,6 @@
 }
 
 mat-sidenav-content {
+  max-width: 750px;
   overflow-x: clip;
 }
