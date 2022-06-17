@@ -12,17 +12,17 @@
                   {{exercise.value.exerciseName}}
                 </mat-panel-title>
                 <mat-panel-description>
-                  {{exercise.value.sets.length}}x{{exercise.value.reps}}
+                  Sets: {{exercise.value.sets.length}}
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <div formArrayName="sets">
                 <ng-container *ngFor="let set of sets(exerciseIndex).controls;; let setIndex=index">
                   <div [formGroupName]="setIndex" class="set-container">
-                    <mat-form-field appearance="standard">
+                    <mat-form-field class="input-num" appearance="standard">
                       <mat-label>Reps</mat-label>
                       <input matInput type="number" min="1" value='2' formControlName="reps">
                     </mat-form-field>
-                    <mat-form-field appearance="standard">
+                    <mat-form-field class="input-num" appearance="standard">
                       <mat-label>Weight</mat-label>
                       <input matInput type="number" placeholder="12" min="0" value="0" formControlName="weight">
                     </mat-form-field>
@@ -30,12 +30,23 @@
                     <mat-checkbox color="warn" formControlName="isFail">Fail</mat-checkbox>
                   </div>
                 </ng-container>
+                <button mat-mini-fab color="warn" (click)="addSet(exerciseIndex)">
+                  <mat-icon>add</mat-icon>
+                </button>
               </div>
             </mat-expansion-panel>
           </div>
         </mat-accordion>
       </div>
     </form>
+    <mat-form-field appearance="standard">
+      <mat-label>Exercise</mat-label>
+      <input type="text" matInput (keyup)="onKey($event)">
+    </mat-form-field>
+    <button mat-fab color="warn" (click)="addExercise()">
+      <mat-icon>add</mat-icon>
+    </button>
+
   </mat-card-content>
   <mat-card-actions align="end">
     <button mat-raised-button color="warn" (click)="resetForm()">Cancel</button>
