@@ -46,12 +46,13 @@ export class WorkoutComponent implements OnInit {
     });
     this.userService.activeRoutine.subscribe((routine) => {
       console.log('routine :>> ', routine);
-
       if (routine) {
         this.activeRoutine = routine;
         this.setRoutineDay(routine);
-        this.setSets();
-        this.createExercisesGroups();
+        if (this.workout) {
+          this.setSets();
+          this.createExercisesGroups();
+        }
       }
     });
   }

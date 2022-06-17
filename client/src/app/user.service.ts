@@ -23,7 +23,7 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    this.updateActiveRoutine(user.routines);
     this.userSource.next(user);
+    this.updateActiveRoutine(user.routines);
   }
 }
