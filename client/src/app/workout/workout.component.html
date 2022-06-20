@@ -9,6 +9,9 @@
             <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>
+                  <button mat-icon-button color="warn" (click)="removeExercise(exerciseIndex)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
                   {{exercise.value.exerciseName}}
                 </mat-panel-title>
                 <mat-panel-description>
@@ -26,11 +29,14 @@
                       <mat-label>Weight</mat-label>
                       <input matInput type="number" placeholder="12" min="0" value="0" formControlName="weight">
                     </mat-form-field>
-                    <mat-checkbox color="primary" formControlName="isDone">Done</mat-checkbox>
-                    <mat-checkbox color="warn" formControlName="isFail">Fail</mat-checkbox>
+                    <mat-checkbox class="mg-btm20" color="primary" formControlName="isDone">Done</mat-checkbox>
+                    <mat-checkbox class="mg-btm20" color="warn" formControlName="isFail">Fail</mat-checkbox>
+                    <button class="mg-btm13" mat-icon-button color="warn" (click)="removeSets(exerciseIndex, setIndex)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
                   </div>
                 </ng-container>
-                <button mat-mini-fab color="warn" (click)="addSet(exerciseIndex)">
+                ADD A SET <button mat-mini-fab color="warn" (click)="addSet(exerciseIndex)">
                   <mat-icon>add</mat-icon>
                 </button>
               </div>

@@ -117,6 +117,10 @@ export class WorkoutComponent implements OnInit {
     }));
   }
 
+  removeExercise(exerciseIndex: number) {
+    this.exercises().removeAt(exerciseIndex);
+  }
+
   onKey(event: any) {
     this.newExerciseName = event.target.value;
   }
@@ -161,6 +165,10 @@ export class WorkoutComponent implements OnInit {
       }
     ));
   }
+  removeSets(exerciseIndex: number, setIndex: number) {
+    this.sets(exerciseIndex).removeAt(setIndex);
+  }
+
 
   resetForm() {
     this.exercisesArray = new FormArray([]);
