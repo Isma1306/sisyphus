@@ -1,7 +1,7 @@
 const { writeExercise } = require('./queries/exercise.query');
-const { writeRoutine } = require('./queries/routine.query');
+const { writeRoutine, readRoutines, destroyRoutine, updateRoutines } = require('./queries/routine.query');
 
-const createRoutine = async function (req, res) {
+const createRoutine = async function (req, res) {  // Works
   const userId = 1;
   const routine = req.body;
   try {
@@ -21,13 +21,14 @@ const createRoutine = async function (req, res) {
   }
 };
 const deleteRoutine = async function (req, res) {
-  // Test me
-  const userId = req.session.uid;
+  // WORKS
+  const userId = 1;
+  // req.session.uid;
   const routine = req.body;
   try {
-    const routine = await destroyRoutine(routine, userId);
+    const routines = await destroyRoutine(routine, userId);
     res.status(202);
-    res.send({ error: null, data: routine });
+    res.send({ error: null, data: routines });
   } catch (error) {
     res.status(400);
     res.send({
@@ -40,9 +41,10 @@ const deleteRoutine = async function (req, res) {
 const updateRoutine = async function (req, res) {
   // Test me
   const routine = req.body;
-  const userId = req.session.uid;
+  const userId = 1;
+  // req.session.uid
   try {
-    const newRoutines = await updateRoutine(routine, userId);
+    const newRoutines = await updateRoutines(routine, userId);
     res.status(201);
     res.send({ error: null, data: newRoutines });
   } catch (error) {
@@ -54,8 +56,9 @@ const updateRoutine = async function (req, res) {
     console.log('error :>> ', error);
   }
 };
-const getRoutinesByUser = async function (req, res) {
-  const userId = req.session.uid;
+const getRoutinesByUser = async function (req, res) { // Works
+  const userId = 1
+  // req.session.uid;
   try {
     const routines = await readRoutines(userId);
     res.status(200);

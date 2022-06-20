@@ -1,8 +1,8 @@
 const db = require('../../models/db');
 
-const readRoutines = async (userId) => {
+const readRoutines = async (userId) => { // Works
   try {
-    await db.Routine.findAll({
+    return await db.Routine.findAll({
       where: {
         UserId: userId,
       },
@@ -12,7 +12,7 @@ const readRoutines = async (userId) => {
   }
 };
 
-const writeRoutine = async (routine, userId) => {
+const writeRoutine = async (routine, userId) => {  // Works
   try {
     return await db.Routine.create({
       routineName: routine.routineName,
@@ -24,16 +24,16 @@ const writeRoutine = async (routine, userId) => {
   }
 };
 
-const updateRoutine = async (routine, userId) => {
+const updateRoutines = async (routine, userId) => {
   // Test me
   // should update single routine where foreign key matches userId and routineName matches
   try {
-    await db.Routine.update(
-      { routineName: routine.name, days: routine.days },
+    return await db.Routine.update(
+      { routineName: routine.routineName, days: routine.days },
       {
         where: {
-          routineName: routine.name,
-          UserId: userId,
+          // id: routine.id,
+          UserId: userId
         },
       }
     );
@@ -43,12 +43,12 @@ const updateRoutine = async (routine, userId) => {
 };
 
 const destroyRoutine = async (routine, userId) => {
-  // Test me
+  // WORKS
   // should destory routine where foreign key matches userId and where routineName matches. Should also destroy all associated exercises OR Create destroy all exercise query? Not sure if you can link
   try {
-    await db.Routine.destroy({
+    return await db.Routine.destroy({
       where: {
-        routineName: routine.name,
+        id: routine.id,
         UserId: userId,
       },
     });
@@ -57,4 +57,4 @@ const destroyRoutine = async (routine, userId) => {
   }
 };
 
-module.exports = { writeRoutine, readRoutines, updateRoutine, destroyRoutine };
+module.exports = { writeRoutine, readRoutines, updateRoutines, destroyRoutine };
