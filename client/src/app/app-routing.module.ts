@@ -6,12 +6,13 @@ import { CreateRoutineComponent } from './create-rutine/create-routine.component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginCardComponent } from './login-card/login-card.component';
 import { SignupCardComponent } from './signup-card/signup-card.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   { path: 'signup', component: SignupCardComponent },
   { path: 'login', component: LoginCardComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'create-routine', component: CreateRoutineComponent },
   { path: 'routine-menu', component: RoutineMenuComponent },
   { path: 'workout', component: WorkoutComponent },

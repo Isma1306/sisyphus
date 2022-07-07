@@ -180,6 +180,9 @@ export class WorkoutComponent implements OnInit {
     this.userService.updateUser(this.user);
   }
 
+  onSubmit() {
+    console.log('this.workoutForm :>> ', this.workoutForm.value.exercises);
+  }
 }
 
 

@@ -8,9 +8,11 @@ import { Routine, User } from './interfaces';
 export class UserService {
   private userSource = new BehaviorSubject<User | null>(null);
   private activeRoutineSource = new BehaviorSubject<Routine | null>(null);
+  private isLoggedinSource = new BehaviorSubject<boolean>(false);
 
   currentUser = this.userSource.asObservable();
   activeRoutine = this.activeRoutineSource.asObservable();
+  isLoggedin = this.isLoggedinSource.asObservable();
 
   constructor() { }
 
@@ -25,5 +27,9 @@ export class UserService {
   updateUser(user: User) {
     this.userSource.next(user);
     this.updateActiveRoutine(user.routines);
+  }
+
+  updateLoggedin(boolean: boolean) {
+    this.isLoggedinSource.next(boolean);
   }
 }
