@@ -62,6 +62,7 @@ export class SignupCardComponent implements OnInit {
       this.http.createUser(user).subscribe((newUser) => {
         this.signup.reset();
         this.userService.updateUser(newUser);
+        this.userService.updateLoggedin(true);
         this.notification.createNotification(`Your account has been created!`);
         this.route.sendTo('dashboard');
       });

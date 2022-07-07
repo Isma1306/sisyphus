@@ -17,8 +17,6 @@ export class AuthGuard implements CanActivate {
         if (!isLoggedin) {
           this.router.navigateByUrl('/login');
         }
-
-
         return isLoggedin;
       })
     );

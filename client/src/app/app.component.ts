@@ -13,7 +13,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.http.getUser().subscribe(user => {
       this.userService.updateUser(user);
-
+      this.userService.updateLoggedin(true);
     });
   }
 }

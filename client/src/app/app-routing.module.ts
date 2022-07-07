@@ -13,9 +13,9 @@ const routes: Routes = [
   { path: 'signup', component: SignupCardComponent },
   { path: 'login', component: LoginCardComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'create-routine', component: CreateRoutineComponent },
-  { path: 'routine-menu', component: RoutineMenuComponent },
-  { path: 'workout', component: WorkoutComponent },
+  { path: 'create-routine', component: CreateRoutineComponent, canActivate: [AuthGuard] },
+  { path: 'routine-menu', component: RoutineMenuComponent, canActivate: [AuthGuard] },
+  { path: 'workout', component: WorkoutComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

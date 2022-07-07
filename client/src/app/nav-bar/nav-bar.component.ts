@@ -38,6 +38,7 @@ export class NavBarComponent {
 
   logoutHandler() {
     this.http.logoutUser().subscribe(() => {
+      this.userService.updateLoggedin(false);
       this.route.sendTo('login');
     });
   }
