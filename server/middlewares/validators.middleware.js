@@ -1,20 +1,16 @@
 const { check, validationResult } = require('express-validator');
 
 const signInConfig = [
-  check("name")
-    .notEmpty()
-    .withMessage("name cannot be empty.")
-    .trim(),
+  check('name').notEmpty().withMessage('name cannot be empty.').trim(),
 
-  check("email")
+  check('email')
     .isEmail()
-    .withMessage("invalid email address.")
+    .withMessage('invalid email address.')
     .normalizeEmail(),
 
-  check("password")
+  check('password')
     .isLength({ min: 6, max: 20 })
-    .withMessage("your password should have min and max length between 6-20.")
-
+    .withMessage('your password should have min and max length between 6-20.'),
 ];
 
 const signInValidator = function (req, res, next) {
@@ -28,16 +24,12 @@ const signInValidator = function (req, res, next) {
 };
 
 const logInConfig = [
-  check("email")
+  check('email')
     .isEmail()
-    .withMessage("Invalid email address.")
+    .withMessage('Invalid email address.')
     .normalizeEmail(),
 
-  check("password")
-    .notEmpty()
-    .withMessage("Password cannot be empty.")
-    .trim(),
-
+  check('password').notEmpty().withMessage('Password cannot be empty.').trim(),
 ];
 
 const logInValidator = function (req, res, next) {
@@ -51,5 +43,8 @@ const logInValidator = function (req, res, next) {
 };
 
 module.exports = {
-  signInConfig, signInValidator, logInConfig, logInValidator
+  signInConfig,
+  signInValidator,
+  logInConfig,
+  logInValidator,
 };

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { User, Routine, ApiResponseRoutine, ApiResponseUser, ApiResponseRoutines } from './interfaces';
+import { User, Routine, ApiResponseRoutine, ApiResponseUser, ApiResponseRoutines, ExerciseSets } from './interfaces';
 
 
 
@@ -45,8 +45,14 @@ export class APIClientService {
       return response.data;
     }));
   }
-
-  // routine handling requests
+  // Exercise handling requests
+  SaveExer(routine: ExerciseSets) {
+    return this.http.post<ExerciseSets>(`${url}/routine`, routine, {
+      withCredentials: true,
+    }).pipe(map(response => {
+      return response;
+    }));
+  }
 
   SaveRoutine(routine: Routine) {
     return this.http.post<ApiResponseRoutine>(`${url}/routine`, routine, {

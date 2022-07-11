@@ -13,7 +13,7 @@ export interface User {
 export interface ExerciseSets {
   reps: number,
   exerciseName: string,
-  setList: any[];
+  setList: [SetList];
 }
 
 export interface SetList {

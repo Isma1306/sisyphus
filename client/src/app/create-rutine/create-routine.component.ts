@@ -111,13 +111,21 @@ export class CreateRoutineComponent implements OnInit {
   onSubmit() {
     const routine = {
       routineName: this.firstFormGroup.value.routineName,
-      days: this.addWeekdays(this.routineForm.value.days)
+      days: this.addWeekdays(this.routineForm.value.days),
+      exercises: this.addExercise(this.routineForm.value.days)
     };
+    const exercise = {
+      exerciseName: this.addExercise(this.routineForm.value.days),
+      reps: this.addExercise(this.routineForm.value.reps)
+    }
     this.http.SaveRoutine(routine)
       .subscribe((res) => {
         this.notification.createNotification(`New Routine: ${res.routineName}, created!`);
       });
-  }
+    this.http.SaveRoutine(exercise)
+    .subscribe((res) => {
+      this.notification.createNotification(`New Routine: ${res.exerciseName}, created!`);
+  })
 
 
 
